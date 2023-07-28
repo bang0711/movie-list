@@ -2,12 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import AddButton from "./AddButton";
-
+import { PrismaClient } from "@prisma/client";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 type Props = {
   movie: any;
 };
-
-function MovieCard({ movie }: Props) {
+const prisma = new PrismaClient();
+async function MovieCard({ movie }: Props) {
+  const session = await getServerSession(authOptions);
+  // const user = await prisma.user.findUnique({
+  //   where: {
+  //     email: session?.user?.email as string,
+  //   },
+  // });
+  // console.log(user);
   return (
     <div className="flex flex-col border border-gray-200 items-center justify-center mx-auto gap-3 py-3 px-1 rounded-lg shadow-lg relative">
       <Image
