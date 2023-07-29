@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-
+import { toast } from "react-toastify";
 type Props = { movie: any };
 
 function AddButton({ movie }: Props) {
@@ -14,13 +14,16 @@ function AddButton({ movie }: Props) {
   const router = useRouter();
   const addMovie = async (e: any) => {
     e.preventDefault();
-    await fetch("/api/add-movie", {
+    const res = await fetch("/api/add-movie", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(data),
     });
-
-    router.refresh();
+    if (!res.ok) {
+      toast.error("Failed to add movie.");
+      return;
+    }
+    toast.success("Add movie successfully.");
   };
   return <button onClick={addMovie}>Add To Favorite List</button>;
 }
