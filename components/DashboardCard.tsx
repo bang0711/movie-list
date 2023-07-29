@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import AddButton from "./AddButton";
+import DeleteButton from "./DeleteButton";
 
 type Props = {
   movie: any;
 };
 
-async function MovieCard({ movie }: Props) {
+function DashboardCard({ movie }: Props) {
   return (
     <div className="flex flex-col border border-gray-200 items-center justify-center mx-auto gap-3 py-3 px-1 rounded-lg shadow-lg relative">
       <Image
@@ -19,7 +19,7 @@ async function MovieCard({ movie }: Props) {
         loading="lazy"
       />
       <Link
-        href={`/movie/${movie.id}`}
+        href={`/movie/${movie.movieId}`}
         className="w-60 text-center p-2 truncate group"
       >
         {" "}
@@ -47,9 +47,9 @@ async function MovieCard({ movie }: Props) {
           )
         )}
       </div>
-      <AddButton movie={movie} />
+      <DeleteButton movie={movie} />
     </div>
   );
 }
 
-export default MovieCard;
+export default DashboardCard;

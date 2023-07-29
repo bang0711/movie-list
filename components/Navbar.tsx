@@ -10,10 +10,9 @@ function Navbar({}: Props) {
   return (
     <header className="shadow-md flex items-center justify-between p-3 sticky z-50 top-0 backdrop-blur-md bg-white/50">
       <nav className="flex items-center justify-between w-full">
-        <button>
-          {" "}
-          <Link href={"/"}>Home</Link>
-        </button>
+        <Link href={"/"} className="btn">
+          Home
+        </Link>
 
         <div className="flex items-center gap-2">
           {data && status === "authenticated" && (

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+
 type Props = { movie: any };
 
 function AddButton({ movie }: Props) {
@@ -13,16 +14,13 @@ function AddButton({ movie }: Props) {
   const router = useRouter();
   const addMovie = async (e: any) => {
     e.preventDefault();
-    const res = await fetch("/api/add-movie", {
+    await fetch("/api/add-movie", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(data),
     });
-    if (res.ok) {
-      router.refresh();
-    }
 
-    throw new Error("Some thing went wrong!");
+    router.refresh();
   };
   return <button onClick={addMovie}>Add To Favorite List</button>;
 }

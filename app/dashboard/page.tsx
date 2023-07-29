@@ -3,7 +3,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
-import MovieCard from "@/components/MovieCard";
+
+import DashboardCard from "@/components/DashboardCard";
 type Props = {};
 const prisma = new PrismaClient();
 async function DashboardPage({}: Props) {
@@ -19,8 +20,10 @@ async function DashboardPage({}: Props) {
       email: true,
       name: true,
       movies: true,
+      id: true,
     },
   });
+
   return (
     <div>
       <p className="p-3">Welcome back {user?.name}</p>
@@ -28,7 +31,7 @@ async function DashboardPage({}: Props) {
         <p className="text-center py-3">This is you favorite movies</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto">
           {user?.movies.slice(1, user?.movies.length).map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
+            <DashboardCard movie={movie} key={movie.id} />
           ))}
         </div>
       </div>

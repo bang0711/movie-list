@@ -15,11 +15,25 @@ export async function POST(req: Request) {
     select: {
       email: true,
       id: true,
+      movies: true,
     },
   });
   const body = await req.json();
+
   const { movieId, title, backdrop_path, vote_average } = body;
 
+  const movie = await prisma.movie.findFirst({
+    where: {
+      movieId,
+      title,
+      backdrop_path,
+      vote_average,
+      userId: user!.id,
+    },
+  });
+  if (movie) {
+    return new NextResponse("You already have this movie", { status: 400 });
+  }
   const newMovie = await prisma.movie.create({
     data: {
       movieId,
@@ -29,7 +43,5 @@ export async function POST(req: Request) {
       userId: user!.id,
     },
   });
-  console.log(user);
-  console.log(movieId);
   return NextResponse.json(newMovie);
 }
