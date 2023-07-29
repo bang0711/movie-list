@@ -17,7 +17,7 @@ export async function DELETE(req: Request) {
     },
   });
 
-  await prisma.movie.delete({
+  const deletedMovie = await prisma.movie.delete({
     where: {
       userId: user?.id,
       id: movieId,
@@ -25,4 +25,5 @@ export async function DELETE(req: Request) {
       title,
     },
   });
+  return NextResponse.json(deletedMovie);
 }
