@@ -19,36 +19,6 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
-    CredentialsProvider({
-      name: "credentials",
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
-      // @ts-expect-error
-      async authorize(credentials) {
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials?.email,
-          },
-        });
-
-        if (!user) {
-          return new NextResponse("User not found.", { status: 400 });
-        }
-
-        const isMatch = bcrypt.compare(
-          user?.hashedPassword as string,
-          credentials?.password!
-        );
-
-        if (!isMatch) {
-          return new NextResponse("Password incorrect.", { status: 400 });
-        }
-
-        return user;
-      },
-    }),
   ],
   session: {
     strategy: "jwt",
