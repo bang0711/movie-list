@@ -9,7 +9,7 @@ type Props = {
 
 function DashboardCard({ movie }: Props) {
   return (
-    <div className="flex flex-col border border-gray-200 items-center justify-center mx-auto gap-3 py-3 px-1 rounded-lg shadow-lg relative">
+    <div className="flex flex-col border border-gray-200 dark:border-black dark:shadow-slate-500 items-center justify-center mx-auto gap-3 py-5 px-1 rounded-lg shadow-lg relative">
       <Image
         src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
         alt={movie.title}
@@ -20,15 +20,15 @@ function DashboardCard({ movie }: Props) {
       />
       <Link
         href={`/movie/${movie.movieId}`}
-        className="w-60 text-center p-2 truncate group"
+        className="w-60 text-center px-2 truncate group"
       >
         {" "}
-        <p className="translate-y-3 group-hover:translate-y-0 transition-all duration-300">
-          {movie.title}
+        <p className="relative group">
+          <span className="opacity-100 group-hover:opacity-0 transition-all duration-300 ">
+            {movie.title}
+          </span>
+          <span className="read-button">Read More</span>
         </p>
-        <div
-          className={`ease-in-out group-hover:w-full mx-auto w-0 transition-all duration-500 h-2 rounded-lg bg-black dark:bg-white`}
-        />
       </Link>
       <div className="flex w-full justify-center gap-1">
         {[...Array.from({ length: Math.round(movie.vote_average / 2) })].map(

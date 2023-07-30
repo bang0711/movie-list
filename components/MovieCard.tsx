@@ -22,14 +22,12 @@ async function MovieCard({ movie }: Props) {
         href={`/movie/${movie.id}`}
         className="w-60 text-center p-2 truncate group"
       >
-        {" "}
-        <p className="translate-y-3 group-hover:translate-y-0 transition-all duration-300">
-          {" "}
-          {movie.title}
+        <p className="relative group">
+          <span className="opacity-100 group-hover:opacity-0 transition-all duration-300 ">
+            {movie.title}
+          </span>
+          <span className="read-button">Read More</span>
         </p>
-        <div
-          className={`ease-in-out group-hover:w-full mx-auto w-0 transition-all duration-300 h-2 rounded-lg bg-black dark:bg-white`}
-        />
       </Link>
       <div className="flex w-full justify-center gap-1">
         {[...Array.from({ length: Math.round(movie.vote_average / 2) })].map(

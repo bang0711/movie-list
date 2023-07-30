@@ -31,7 +31,7 @@ async function DashboardPage({}: Props) {
       <SignOut />
       <div className="">
         <p className="text-center py-3">This is you favorite movies</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto gap-3">
           {user?.movies.slice(1, user?.movies.length).map((movie) => (
             <DashboardCard movie={movie} key={movie.id} />
           ))}

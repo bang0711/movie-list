@@ -15,6 +15,9 @@
   .btn {
     @apply dark:text-black dark:bg-white bg-black text-white p-2 rounded-lg shadow-md dark:hover:shadow-slate-500 hover:scale-105 hover:shadow-lg font-medium transition-all duration-300 hover:shadow-black;
   }
+  .read-button {
+    @apply dark:text-black dark:bg-white bg-black text-white p-3 rounded-lg shadow-md dark:hover:shadow-slate-500  font-medium transition-all duration-300 hover:shadow-black scale-0 group-hover:scale-100 absolute inset-0 flex items-center justify-center;
+  }
   input {
     @apply p-3 outline-none rounded-lg focus-within:shadow-lg border border-gray-200 text-base font-normal;
   }
