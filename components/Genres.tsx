@@ -18,7 +18,7 @@ function Genres({}: Props) {
     <ul className="flex flex-wrap gap-3 items-center justify-center py-3">
       {genresList.map((genre: any) => (
         <li
-          className={`border border-gray-200 shadow-md px-3 py-1 rounded-lg hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer`}
+          className={`border border-gray-200 shadow-md px-3 py-1 rounded-lg hover:scale-105 hover:shadow-lg cursor-pointer`}
           key={genre.id}
         >
           <Link href={`/genres/${genre.id}`}> {genre.name}</Link>

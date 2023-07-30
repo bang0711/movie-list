@@ -23,9 +23,11 @@ function DashboardCard({ movie }: Props) {
         className="w-60 text-center p-2 truncate group"
       >
         {" "}
-        {movie.title}
+        <p className="translate-y-3 group-hover:translate-y-0 transition-all duration-300">
+          {movie.title}
+        </p>
         <div
-          className={`group-hover:w-full mx-auto w-0 transition-all duration-500 h-2 rounded-lg bg-black`}
+          className={`ease-in-out group-hover:w-full mx-auto w-0 transition-all duration-500 h-2 rounded-lg bg-black dark:bg-white`}
         />
       </Link>
       <div className="flex w-full justify-center gap-1">

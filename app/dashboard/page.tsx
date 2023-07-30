@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 
 import DashboardCard from "@/components/DashboardCard";
+import SignOut from "@/components/SignOut";
 type Props = {};
 const prisma = new PrismaClient();
 async function DashboardPage({}: Props) {
@@ -25,8 +26,9 @@ async function DashboardPage({}: Props) {
   });
 
   return (
-    <div>
+    <div className="p-3">
       <p className="p-3">Welcome back {user?.name}</p>
+      <SignOut />
       <div className="">
         <p className="text-center py-3">This is you favorite movies</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto">

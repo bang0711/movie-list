@@ -3,6 +3,8 @@ import MovieCard from "@/components/MovieCard";
 import { getMovies } from "@/libs/Functions";
 import Link from "next/link";
 import React from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 type Props = {};
 
 async function HomePage({}: Props) {
@@ -22,7 +24,7 @@ async function HomePage({}: Props) {
   ];
   return (
     <div>
-      <Genres />
+      {/* <Genres /> */}
       <div className="flex flex-col gap-3">
         {types.map(async (type) => {
           const movies = await getMovies(1, type.id);

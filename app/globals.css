@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 @layer components {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 10000s;
+    -webkit-text-fill-color: black !important;
+  }
   button {
-    @apply p-2 rounded-lg shadow-md border border-gray-200 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white font-medium;
+    @apply dark:text-black dark:shadow-slate-500 p-2 rounded-lg shadow-md border border-gray-200 hover:scale-105 hover:shadow-lg bg-black text-white font-medium dark:bg-white transition-all duration-300;
   }
   .btn {
-    @apply p-2 rounded-lg shadow-md border border-gray-200 hover:scale-105 hover:shadow-lg transition-all duration-300 bg-white font-medium;
+    @apply dark:text-black dark:bg-white bg-black text-white p-2 rounded-lg shadow-md border border-gray-200 hover:scale-105 hover:shadow-lg font-medium transition-all duration-300;
+  }
+  input {
+    @apply p-3 outline-none rounded-lg focus-within:shadow-lg border border-gray-200 text-base font-normal;
+  }
+  .input {
+    @apply flex flex-col font-medium text-lg uppercase gap-3;
+  }
+  .disabled {
+    @apply disabled:hover:scale-100 disabled:hover:shadow-md;
   }
 }
