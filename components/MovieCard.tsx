@@ -9,7 +9,7 @@ type Props = {
 
 async function MovieCard({ movie }: Props) {
   return (
-    <div className="flex flex-col border border-gray-200 items-center justify-center mx-auto gap-3 py-3 px-1 rounded-lg shadow-lg relative">
+    <div className="flex flex-col border border-gray-200 dark:border-black dark:shadow-slate-500 items-center justify-center mx-auto gap-3 py-3 px-1 rounded-lg shadow-lg relative">
       <Image
         src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
         alt={movie.title}

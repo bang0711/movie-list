@@ -29,7 +29,7 @@ async function HomePage({}: Props) {
         {types.map(async (type) => {
           const movies = await getMovies(1, type.id);
           return (
-            <div key={type.id}>
+            <div key={type.id} className="flex flex-col gap-3">
               <div className="px-3 flex items-center justify-between">
                 <p className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl uppercase">
                   {type.title}
